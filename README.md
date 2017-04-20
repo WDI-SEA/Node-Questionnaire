@@ -134,10 +134,10 @@ search
 star+wars
 
 <!-- 5.  What part of the url above matches the express route? -->
-
+localhost
 
 <!-- 6.  What is the difference between using req.params and req.query -->
-
+Req is an object containing information about the HTTP request that raised the event. In response to req, you use res to send back the desired HTTP response
 
 <!-- 7.  How can I access the query key/value pairs inside the route callback? -->
 
