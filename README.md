@@ -26,7 +26,7 @@ Here's the answer I located, "Node.js is a platform built on Chrome's JavaScript
 
 7. When using require(), where is the module being pulled in from?
 
-	The module is being pulled in from the 'node-module' folder within the Node repo.
+	The module is being pulled in from the 'node-modules' folder within the Node repo.
 
 8. List some common modules we have used in node. There are at least two.
 
@@ -42,6 +42,7 @@ Here's the answer I located, "Node.js is a platform built on Chrome's JavaScript
 2. How do we import express into our node application?
 
 	We run 'npm install --save express' to import express into the Node app.
+	We include "var express = require('express')" in our Node application to use Express in the Node app.
 
 3. After Express is imported, we need to initialize it. We can save this to a variable so that we can reuse it later. What would this line of code look like?
 
@@ -77,7 +78,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 10. If we use body-parser, we can retrieve data from a POST (RESTful routing). How would we access this data from the 'req' object? `app.get('/', function(req, res) {})`
 
-??
+ex.) 	app.post('/games', function(req, res) {
+			var newGame = req.body;   (this contains the body contents as an object)
+				...
+			)};
 
 #### EJS & Setup
 11. What is an EJS file?
@@ -106,11 +110,20 @@ app.set('view engine', 'ejs');
 
 17. We render ejs only when we are ready to send the page to the user. How do we render EJS for the browser? What is the function? *hint: this would be within the route (app.get(); )*
 
-??
+What is the command that causes the ejs file to be rendered.
+
+answer: res.render()
+
+app.set('view engine', 'ejs');
+...
+app.get('/', function(req, res){
+	res.render('videogames', {});
+
+});
 
 18. Following up on the last question, how do we pass data into EJS template? *hint: you will modify the previous answer*
 
-??
+tbd
 
 
 ## Section 3
@@ -130,7 +143,10 @@ app.set('view engine', 'ejs');
 
 4. Identify the parts of this url: `localhost:3000/results?search=star+wars`
 
-
+	localhost is the local machine
+	3000 is the listening port
+	/results is the route that the browser is accessing in its request
+	?search=star+wars is the parameters that the browser is requesting
 
 5. What part of the url above matches the express route?
 
@@ -147,7 +163,8 @@ app.set('view engine', 'ejs');
 
 1. What is RESTful Routing?
 
-Routing that maps HTTP VERBS + URLs to a specific action in the Node application
+Routing that maps HTTP VERBS + URLs to specific actions in the Node application
+It reads or modifies the host server's resource.
 
 2. What is CRUD?
 
