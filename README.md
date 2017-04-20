@@ -37,17 +37,19 @@ In terminal: "npm install --save nameOfFile.js"
 		greetings.sayHelloInSpanish();
 
 7. When using require(), where is the module being pulled in from?
-module.export. ???
+node_modules folder
+
 
 8. List some common modules we have used in node. There are at least two.
-require, http
+body-parcer
+express
 
 ## Section 2
 
 #### Express Setup
 1. What is Express and why would we want to use it?
 
-A web app server framework used to create app's with Javascript.
+A web module & app server framework used to create app's with Javascript.
 
 2. How do we import express into our node application?
 
@@ -90,7 +92,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 10. If we use body-parser, we can retreive data from a POST (RESTful routing). How would we access this data from the 'req' object? `app.get('/', function(req, res) {})`
 
-???
+app.use(bodyParser.urlendcoded({ extended: false }));
 
 #### EJS & Setup
 1. What is an EJS file?
@@ -120,17 +122,31 @@ app.set('view engine', 'ejs');
 
 7. We render ejs only when we are ready to send the page to the user. How do we render EJS for the browser? What is the function? *hint: this would be within the route (app.get(); )*
 
+app.get('/', function(req, res) {
+	res.render('videogames', {...})
+});
 
+videogames.ejs is understood because ejs is the render.
 
 8. Following up on the last question, how do we pass data into EJS template? *hint: you will modify the previous answer*
+
+???
 
 ## Section 3
 
 #### Routes
 1. req params vs req query
+
+req query for get routes will be used for our course.
+
 2. Write a route that utilizes req.params
 3. Adding onto the previous question: Inside the callback of the route, how can I access those parameters? *hint: thing back to /add/:x/:y/*
 4. Identify the parts of this url: `localhost:3000/results?search=star+wars`
+
+localhost:3000  - our domain (on our computer) & port
+/results  - route ()
+?search=star+wars  - parmeters (length varies based on our form)
+
 5. What part of the url above matches the express route?
 6. What is the difference between using req.params and req.query
 7. How can I access the query key/value pairs inside the route callback?
@@ -155,14 +171,22 @@ Create, Read, Update, Delete.
 Either hardcode it: app.set('port', process.env.PORT || 3000);
 or: $ PORT=8080 node app.js
 
+app.listen
+
 #### Breakdowns
 Identify the following parts:
+
 `var express = require('express');`
 
+Makes Express module a var & requires our project to use it.
 
 `app.use(express.static(path.join(__dirname, 'static')));`
 
+???
+
 `app.get('/', function(req, res){});`
+
+???
 
 `app.set('view engine', 'ejs');`
 
